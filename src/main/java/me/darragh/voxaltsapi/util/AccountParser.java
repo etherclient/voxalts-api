@@ -29,6 +29,10 @@ public class AccountParser {
         );
     }
 
+    public static boolean isValidFormat(String input) {
+        return LINE_PATTERN.matcher(input).matches();
+    }
+
     public record AccountInformation(
             String username,
             String email,
