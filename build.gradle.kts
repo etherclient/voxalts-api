@@ -78,7 +78,7 @@ publishing {
     repositories {
         mavenLocal()
         maven {
-            url = uri("https://repo.darragh.website/ether-internal")
+            url = uri("https://repo.darragh.website/releases")
             credentials {
                 username = System.getenv("REPO_TOKEN")
                 password = System.getenv("REPO_SECRET")
