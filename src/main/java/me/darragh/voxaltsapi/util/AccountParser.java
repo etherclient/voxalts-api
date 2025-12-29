@@ -1,5 +1,7 @@
 package me.darragh.voxaltsapi.util;
 
+import lombok.Value;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,11 +35,11 @@ public class AccountParser {
         return LINE_PATTERN.matcher(input).matches();
     }
 
-    public record AccountInformation(
-            String username,
-            String email,
-            String password,
-            String mctoken
-    ) {
+    @Value
+    public static class AccountInformation {
+        String username;
+        String email;
+        String password;
+        String mctoken;
     }
 }

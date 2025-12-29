@@ -6,7 +6,7 @@ plugins {
 // Toolchains:
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
+        languageVersion.set(JavaLanguageVersion.of(8))
     }
 }
 
@@ -25,6 +25,7 @@ val annotationImplementation: Configuration by configurations.creating {
 dependencies {
     // Libraries
     implementation("com.google.code.gson:gson:2.13.2")
+    implementation("com.squareup.okhttp3:okhttp:5.3.2")
 
     // Annotations
     compileOnly("org.jetbrains:annotations:26.0.2")
@@ -42,13 +43,13 @@ publishing {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
             groupId = "me.darragh"
-            artifactId = "voxalts-api"
+            artifactId = "voxalts-api-java8"
             version = project.version.toString()
 
             pom {
                 name.set("voxalts-api")
                 properties.set(mapOf(
-                    "java.version" to "17",
+                    "java.version" to "8",
                     "project.build.sourceEncoding" to "UTF-8",
                     "project.reporting.outputEncoding" to "UTF-8"
                 ))
