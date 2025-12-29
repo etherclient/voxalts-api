@@ -15,11 +15,11 @@ repositories {
 }
 
 dependencies {
-    implementation("me.darragh:voxalts-api:{version}")
+    implementation("me.darragh:voxalts-api-java8:{version}")
 }
 ```
 
-_This project is also available via. Jitpack. View more information [here](https://jitpack.io/#etherclient/voxalts-api)._
+_This project is also available via. Jitpack. View more information [here](https://jitpack.io/#etherclient/voxalts-api). **Ensure that the release is for Java 8.**_
 
 ## Features
 
