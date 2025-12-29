@@ -33,7 +33,6 @@ public class CommunicationHandler {
 
     private final String apiKey;
     private final HttpClient httpClient = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_1_1)
             .connectTimeout(Duration.ofMinutes(3))
             .build();
 
