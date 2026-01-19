@@ -1,6 +1,6 @@
-# voxalts-api
+# ptalts-api (java-8 branch)
 
-> A library for interacting with the [VoxAlts](https://voxalts.store/) API.
+> A library for interacting with the [ptalts](https://ptalts.store/) API.
 
 ## Installation
 
@@ -15,11 +15,11 @@ repositories {
 }
 
 dependencies {
-    implementation("me.darragh:voxalts-api-java8:{version}")
+    implementation("me.darragh:ptalts-api-java8:{version}")
 }
 ```
 
-_This project is also available via. Jitpack. View more information [here](https://jitpack.io/#etherclient/voxalts-api). **Ensure that the release is for Java 8.**_
+_This project is also available via. Jitpack. View more information [here](https://jitpack.io/#etherclient/ptalts-api). **Ensure that the release is for Java 8.**_
 
 ## Features
 

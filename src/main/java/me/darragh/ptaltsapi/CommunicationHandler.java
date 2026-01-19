@@ -1,11 +1,11 @@
-package me.darragh.voxaltsapi;
+package me.darragh.ptaltsapi;
 
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
-import me.darragh.voxaltsapi.exception.RequestException;
-import me.darragh.voxaltsapi.gson.GsonProvider;
+import me.darragh.ptaltsapi.exception.RequestException;
+import me.darragh.ptaltsapi.gson.GsonProvider;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;

@@ -23,11 +23,8 @@ val annotationImplementation: Configuration by configurations.creating {
 }
 
 dependencies {
-    // Libraries
     implementation("com.google.code.gson:gson:2.13.2")
     implementation("com.squareup.okhttp3:okhttp:5.3.2")
-
-    // Annotations
     compileOnly("org.jetbrains:annotations:26.0.2")
     annotationImplementation("org.projectlombok:lombok:1.18.36")
 }
@@ -43,11 +40,11 @@ publishing {
         create<MavenPublication>("mavenJava") {
             from(components["java"])
             groupId = "me.darragh"
-            artifactId = "voxalts-api-java8"
+            artifactId = "ptalts-api-java8"
             version = project.version.toString()
 
             pom {
-                name.set("voxalts-api")
+                name.set("ptalts-api")
                 properties.set(mapOf(
                     "java.version" to "8",
                     "project.build.sourceEncoding" to "UTF-8",
@@ -64,9 +61,9 @@ publishing {
                     url.set("https://darragh.website")
                 }
                 scm {
-                    connection.set("scm:git:git://github.com/etherclient/voxalts-api.git")
-                    developerConnection.set("scm:git:ssh://github.com/etherclient/voxalts-api.git")
-                    url.set("https://github.com/etherclient/voxalts-api")
+                    connection.set("scm:git:git://github.com/etherclient/ptalts-api.git")
+                    developerConnection.set("scm:git:ssh://github.com/etherclient/ptalts-api.git")
+                    url.set("https://github.com/etherclient/ptalts-api")
                 }
             }
 

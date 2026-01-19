@@ -1,4 +1,4 @@
-package me.darragh.voxaltsapi.gson;
+package me.darragh.ptaltsapi.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

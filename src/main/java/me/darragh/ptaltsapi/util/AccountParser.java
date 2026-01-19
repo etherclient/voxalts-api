@@ -1,4 +1,4 @@
-package me.darragh.voxaltsapi.util;
+package me.darragh.ptaltsapi.util;
 
 import lombok.Value;
 
