@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation("me.darragh:voxalts-api:{version}")
+    implementation("me.darragh:ptalts-api:{version}")
 }
 ```
 
