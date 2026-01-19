@@ -1,6 +1,6 @@
-# voxalts-api
+# ptalts-api
 
-> A library for interacting with the [VoxAlts](https://voxalts.store/) API.
+> A library for interacting with the [PTAlts](https://ptalts.best//) API.
 
 ## Installation
 
@@ -19,7 +19,7 @@ dependencies {
 }
 ```
 
-_This project is also available via. Jitpack. View more information [here](https://jitpack.io/#etherclient/voxalts-api)._
+_This project is also available via. Jitpack. View more information [here](https://jitpack.io/#etherclient/ptalts-api)._
 
 ## Features
 
