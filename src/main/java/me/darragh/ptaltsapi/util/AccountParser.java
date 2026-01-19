@@ -1,4 +1,4 @@
-package me.darragh.voxaltsapi.util;
+package me.darragh.ptaltsapi.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

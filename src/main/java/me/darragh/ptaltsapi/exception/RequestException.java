@@ -1,4 +1,4 @@
-package me.darragh.voxaltsapi.exception;
+package me.darragh.ptaltsapi.exception;
 
 /**
  * Exception thrown when there is an error with a request to the VoxAlts API.

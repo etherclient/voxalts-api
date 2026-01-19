@@ -1,10 +1,10 @@
-package me.darragh.voxaltsapi;
+package me.darragh.ptaltsapi;
 
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
 import lombok.RequiredArgsConstructor;
-import me.darragh.voxaltsapi.exception.RequestException;
-import me.darragh.voxaltsapi.gson.GsonProvider;
+import me.darragh.ptaltsapi.exception.RequestException;
+import me.darragh.ptaltsapi.gson.GsonProvider;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
