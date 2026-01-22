@@ -1,6 +1,7 @@
 package me.darragh.ptaltsapi.util;
 
 import lombok.Value;
+import lombok.experimental.UtilityClass;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.regex.Matcher;
@@ -10,9 +11,10 @@ import java.util.regex.Pattern;
  * Utility class for parsing account information from account strings.
  *
  * @author darraghd493
- * @since 1.00.
+ * @since 1.0.0
  */
-public class AccountParser {
+@UtilityClass
+public final class AccountParser {
     private static final Pattern LINE_PATTERN = Pattern.compile(
             "\\[(?<username>[^]]+)](?<email>[^:]+):(?<password>[^|]+)\\|\\s*mctoken:\\s*(?<mctoken>.+)",
             Pattern.CASE_INSENSITIVE

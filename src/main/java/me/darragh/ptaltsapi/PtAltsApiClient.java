@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
  * Handles communication with the PTAlts API.
  *
  * @author darraghd493
- * @since 10/12/2025
+ * @since 1.0.0
  */
 @RequiredArgsConstructor
 public class PtAltsApiClient {
@@ -38,15 +38,14 @@ public class PtAltsApiClient {
     public static final String ORDERS_URL = BASE_URL + "/orders";
     public static final String ORDER_URL = BASE_URL + "/order/%s"; // needs formatting with order ID
 
-    private final String apiKey;
-    private final OkHttpClient httpClient = new OkHttpClient.Builder()
+    private static final OkHttpClient HTTP_CLIENT = new OkHttpClient.Builder()
             .connectTimeout(3, TimeUnit.MINUTES)
             .build();
-
     private static final Type MAP_STRING_INTEGER_TYPE = new TypeToken<Map<String, Integer>>() {}.getType();
     private static final MediaType MEDIA_TYPE_JSON = MediaType.parse("application/json");
     private static final Gson GSON = GsonProvider.get();
 
+    private final @NotNull String apiKey;
     //region Methods
     /**
      * Fetches the current status from the VoxAlts API.
@@ -61,7 +60,7 @@ public class PtAltsApiClient {
                 .get()
                 .build();
 
-        try (Response response = this.httpClient.newCall(request).execute()) {
+        try (Response response = HTTP_CLIENT.newCall(request).execute()) {
             if (response.code() != 200) {
                 throw new RequestException("Failed to fetch status.\nStatus: " + response.code() + "\nError message: " + extractErrorMessage(response));
             }
@@ -86,7 +85,7 @@ public class PtAltsApiClient {
                 .get()
                 .build();
 
-        try (Response response = this.httpClient.newCall(request).execute()) {
+        try (Response response = HTTP_CLIENT.newCall(request).execute()) {
             if (response.code() != 200) {
                 throw new RequestException("Failed to fetch stock.\nStatus: " + response.code() + "\nError message: " + extractErrorMessage(response));
             }
@@ -112,7 +111,7 @@ public class PtAltsApiClient {
                 .get()
                 .build();
 
-        try (Response response = this.httpClient.newCall(request).execute()) {
+        try (Response response = HTTP_CLIENT.newCall(request).execute()) {
             if (response.code() != 200) {
                 throw new RequestException("Failed to fetch balance.\nStatus: " + response.code() + "\nError message: " + extractErrorMessage(response));
             }
@@ -137,7 +136,7 @@ public class PtAltsApiClient {
                 .get()
                 .build();
 
-        try (Response response = this.httpClient.newCall(request).execute()) {
+        try (Response response = HTTP_CLIENT.newCall(request).execute()) {
             if (response.code() != 200) {
                 throw new RequestException("Failed to fetch prices.\nStatus: " + response.code() + "\nError message: " + extractErrorMessage(response));
             }
@@ -166,7 +165,7 @@ public class PtAltsApiClient {
                 .post(RequestBody.create(requestBody, MEDIA_TYPE_JSON))
                 .build();
 
-        try (Response response = this.httpClient.newCall(request).execute()) {
+        try (Response response = HTTP_CLIENT.newCall(request).execute()) {
             if (response.code() != 200 && response.code() != 400) { // special handling for 400 - it is sent i.e., if verification fails
                 throw new RequestException("Failed to complete purchase.\nStatus: " + response.code() + "\nError message: " + extractErrorMessage(response));
             }
@@ -195,7 +194,7 @@ public class PtAltsApiClient {
                 .post(RequestBody.create(requestBody, MEDIA_TYPE_JSON))
                 .build();
 
-        try (Response response = this.httpClient.newCall(request).execute()) {
+        try (Response response = HTTP_CLIENT.newCall(request).execute()) {
             if (response.code() != 200) {
                 throw new RequestException("Failed to redeem token.\nStatus: " + response.code() + "\nError message: " + extractErrorMessage(response));
             }
@@ -220,7 +219,7 @@ public class PtAltsApiClient {
                 .get()
                 .build();
 
-        try (Response response = this.httpClient.newCall(request).execute()) {
+        try (Response response = HTTP_CLIENT.newCall(request).execute()) {
             if (response.code() != 200) {
                 throw new RequestException("Failed to fetch order history.\nStatus: " + response.code() + "\nError message: " + extractErrorMessage(response));
             }
@@ -247,7 +246,7 @@ public class PtAltsApiClient {
                 .get()
                 .build();
 
-        try (Response response = this.httpClient.newCall(request).execute()) {
+        try (Response response = HTTP_CLIENT.newCall(request).execute()) {
             if (response.code() != 200) {
                 throw new RequestException("Failed to fetch order details.\nStatus: " + response.code() + "\nError message: " + extractErrorMessage(response));
             }

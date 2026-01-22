@@ -2,6 +2,7 @@ package me.darragh.ptaltsapi.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import lombok.experimental.UtilityClass;
 
 /**
  * A provider class for a singleton instance of Gson.
@@ -9,7 +10,8 @@ import com.google.gson.GsonBuilder;
  * @author darraghd493
  * @since 1.0.0
  */
-public class GsonProvider {
+@UtilityClass
+public final class GsonProvider {
     private static final Gson GSON = new GsonBuilder()
             .create();
 
