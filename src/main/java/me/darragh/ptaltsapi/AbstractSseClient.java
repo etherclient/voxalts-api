@@ -68,10 +68,7 @@ class AbstractSseClient<T> {
         };
     }
 
-    private void listen(@NotNull InputStream bodyStream,
-                        @NotNull Consumer<T> onEvent,
-                        @Nullable Consumer<Throwable> onError,
-                        @NotNull AtomicBoolean closed) {
+    private void listen(@NotNull InputStream bodyStream, @NotNull Consumer<T> onEvent, @Nullable Consumer<Throwable> onError, @NotNull AtomicBoolean closed) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(bodyStream))) {
             String line;
             StringBuilder dataBuffer = new StringBuilder();
