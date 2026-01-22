@@ -3,6 +3,7 @@ package me.darragh.ptaltsapi;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import me.darragh.ptaltsapi.exception.RequestException;
 import me.darragh.ptaltsapi.gson.GsonProvider;
@@ -22,9 +23,9 @@ import java.util.Map;
  * Handles communication with the PTAlts API.
  *
  * @author darraghd493
- * @since 10/12/2025
+ * @since 1.0.2
  */
-@RequiredArgsConstructor
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class PtAltsApiClient {
     public static final String BASE_URL = "https://api.voxalts.store/api";
     public static final String STATUS_URL = BASE_URL + "/status";
@@ -36,18 +37,17 @@ public class PtAltsApiClient {
     public static final String ORDERS_URL = BASE_URL + "/orders";
     public static final String ORDER_URL = BASE_URL + "/order/%s"; // needs formatting with order ID
 
-    private final @NotNull String apiKey;
-    private final HttpClient httpClient = HttpClient.newBuilder()
+    private static final HttpClient HTTP_CLIENT = HttpClient.newBuilder()
             .connectTimeout(Duration.ofMinutes(3))
             .build();
-
     private static final Type MAP_STRING_INTEGER_TYPE = new TypeToken<Map<String, Integer>>() {}.getType();
-
     private static final Gson GSON = GsonProvider.get();
+
+    private final @NotNull String apiKey;
 
     //region Methods
     /**
-     * Fetches the current status from the VoxAlts API.
+     * Fetches the current status from the PTAlts API.
      *
      * @return The {@link StatusResponse} containing the number of members.
      * @throws RequestException If there is an error during the request.
@@ -60,7 +60,7 @@ public class PtAltsApiClient {
                 .build();
 
         try {
-            HttpResponse<String> response = this.httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 throw new RequestException("Failed to fetch status.\nStatus: %s\nError message: %s".formatted(response.statusCode(), extractErrorMessage(response)));
@@ -87,7 +87,7 @@ public class PtAltsApiClient {
                 .build();
 
         try {
-            HttpResponse<String> response = this.httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 throw new RequestException("Failed to fetch stock.\nStatus: %s\nError message: %s".formatted(response.statusCode(), extractErrorMessage(response)));
@@ -115,7 +115,7 @@ public class PtAltsApiClient {
                 .build();
 
         try {
-            HttpResponse<String> response = this.httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 throw new RequestException("Failed to fetch balance.\nStatus: %s\nError message: %s".formatted(response.statusCode(), extractErrorMessage(response)));
@@ -142,7 +142,7 @@ public class PtAltsApiClient {
                 .build();
 
         try {
-            HttpResponse<String> response = this.httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 throw new RequestException("Failed to fetch prices.\nStatus: %s\nError message: %s".formatted(response.statusCode(), extractErrorMessage(response)));
@@ -173,7 +173,7 @@ public class PtAltsApiClient {
                 .build();
 
         try {
-            HttpResponse<String> response = this.httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200 && response.statusCode() != 400) { // special handling for 400 - it is sent i.e., if verification fails
                 throw new RequestException("Failed to complete purchase.\nStatus: %s\nError message: %s".formatted(response.statusCode(), extractErrorMessage(response)));
@@ -204,7 +204,7 @@ public class PtAltsApiClient {
                 .build();
 
         try {
-            HttpResponse<String> response = this.httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 throw new RequestException("Failed to redeem token.\nStatus: %s\nError message: %s".formatted(response.statusCode(), extractErrorMessage(response)));
@@ -232,7 +232,7 @@ public class PtAltsApiClient {
                 .build();
 
         try {
-            HttpResponse<String> response = this.httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 throw new RequestException("Failed to fetch order history.\nStatus: %s\nError message: %s".formatted(response.statusCode(), extractErrorMessage(response)));
@@ -261,7 +261,7 @@ public class PtAltsApiClient {
                 .build();
 
         try {
-            HttpResponse<String> response = this.httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = HTTP_CLIENT.send(request, HttpResponse.BodyHandlers.ofString());
 
             if (response.statusCode() != 200) {
                 throw new RequestException("Failed to fetch order details.\nStatus: %s\nError message: %s".formatted(response.statusCode(), extractErrorMessage(response)));
