@@ -27,6 +27,7 @@ _This project is also available via. Jitpack. View more information [here](https
 - Fetch available plans
 - Create new orders
 - Extract mctokens/access tokens (and other data) from session accounts
+- and more!
 
 ## Usage
 

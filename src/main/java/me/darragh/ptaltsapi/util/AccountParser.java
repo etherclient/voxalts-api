@@ -1,5 +1,7 @@
 package me.darragh.ptaltsapi.util;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -15,7 +17,7 @@ public class AccountParser {
             Pattern.CASE_INSENSITIVE
     );
 
-    public static AccountInformation parse(String input) {
+    public static @NotNull AccountInformation parse(@NotNull String input) throws IllegalArgumentException {
         Matcher matcher = LINE_PATTERN.matcher(input);
         if (!matcher.matches()) {
             throw new IllegalArgumentException("Input string does not match expected format");
@@ -29,15 +31,15 @@ public class AccountParser {
         );
     }
 
-    public static boolean isValidFormat(String input) {
+    public static boolean isValidFormat(@NotNull String input) {
         return LINE_PATTERN.matcher(input).matches();
     }
 
     public record AccountInformation(
-            String username,
-            String email,
-            String password,
-            String mctoken
+            @NotNull String username,
+            @NotNull String email,
+            @NotNull String password,
+            @NotNull String mctoken
     ) {
     }
 }
