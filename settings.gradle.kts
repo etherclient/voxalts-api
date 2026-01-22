@@ -1,1 +1,1 @@
-rootProject.name = "voxalts-api"
+rootProject.name = "ptalts-api"
