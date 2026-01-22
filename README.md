@@ -1,6 +1,6 @@
-# ptalts-api (java-8 branch)
+# ptalts-api (java-8)
 
-> A library for interacting with the [ptalts](https://ptalts.store/) API.
+> A library for interacting with the [PTAlts](https://ptalts.store/) API.
 
 ## Installation
 
