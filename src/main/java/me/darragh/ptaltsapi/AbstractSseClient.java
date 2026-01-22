@@ -101,7 +101,7 @@ class AbstractSseClient<T> {
             return;
         }
         try {
-            T event = this.GSON.fromJson(payload, this.eventClass);
+            T event = GSON.fromJson(payload, this.eventClass);
             onEvent.accept(event);
         } catch (Exception ignored) {
         }
