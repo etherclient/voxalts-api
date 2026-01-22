@@ -49,11 +49,11 @@ public class PtAltsApiClient {
     /**
      * Fetches the current status from the VoxAlts API.
      *
-     * @implNote Doesn't need authentication.
      * @return The {@link StatusResponse} containing the number of members.
      * @throws RequestException If there is an error during the request.
      */
     public @NotNull StatusResponse getStatus() throws RequestException {
+        // doesn't need authentication
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(STATUS_URL))
                 .GET()
