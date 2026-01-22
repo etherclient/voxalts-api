@@ -23,7 +23,7 @@ import java.util.Map;
  * Handles communication with the PTAlts API.
  *
  * @author darraghd493
- * @since 1.0.2
+ * @since 1.0.0
  */
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class PtAltsApiClient {
