@@ -26,7 +26,7 @@ import java.util.function.Consumer;
  * A lightweight SSE client to handle restock events from the PTAlts API.
  *
  * @author darraghd493
- * @since 10/12/2025
+ * @since 22/01/2026
  */
 public class PtAltsRestockClient {
     public static final String RESTOCK_EVENTS_URL = PtAltsApiClient.BASE_URL + "/restock-events";
